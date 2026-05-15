@@ -107,13 +107,13 @@ export default function DiaryNewClient() {
         </Section>
 
         {/* 날짜 + 날씨 */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <Section title="방문 날짜">
             <input
               type="date"
               value={form.visit_date}
               onChange={(e) => setForm({ ...form, visit_date: e.target.value })}
-              className="w-full border border-[#EDE0C4] rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#6B9E7B]"
+              className="w-full border border-[#EDE0C4] rounded-xl px-3 py-3 text-sm focus:outline-none focus:border-[#6B9E7B]"
             />
           </Section>
           <Section title="날씨">
