@@ -54,20 +54,20 @@ export default function DiaryClient() {
             <div key={visit.id} className="bg-white rounded-2xl border border-[#EDE0C4] p-5 shadow-sm fade-in">
               {/* 상단: 날짜 + 산 이름 */}
               <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-sm text-[#8B6F47]">{visit.visit_date}</span>
+                <div className="min-w-0 flex-1 mr-2">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="text-sm text-[#8B6F47] whitespace-nowrap">{visit.visit_date}</span>
                     <span className="text-base">{WEATHER_EMOJI[visit.weather] || '🌤️'}</span>
                     {visit.is_favorite && <Star size={14} className="text-[#D4A843] fill-[#D4A843]" />}
                   </div>
-                  <Link href={`/mountains/${visit.mountain_id}`} className="flex items-center gap-1 hover:underline">
-                    <h3 className="text-lg font-bold text-[#2A4E38]">
+                  <Link href={`/mountains/${visit.mountain_id}`} className="flex items-center gap-1 hover:underline min-w-0">
+                    <h3 className="text-lg font-bold text-[#2A4E38] truncate">
                       {(visit.mountain as any)?.name || '산 이름'}
                     </h3>
-                    <ChevronRight size={16} className="text-[#6B9E7B]" />
+                    <ChevronRight size={16} className="text-[#6B9E7B] flex-shrink-0" />
                   </Link>
                 </div>
-                <div className="flex gap-1">
+                <div className="flex gap-1 flex-shrink-0">
                   <Link href={`/diary/edit/${visit.id}`} className="p-2 text-[#8B6F47] hover:text-[#3D6B4F] hover:bg-[#F5EDD6] rounded-lg transition-colors">
                     <Pencil size={14} />
                   </Link>
@@ -78,7 +78,7 @@ export default function DiaryClient() {
               </div>
 
               {/* 통계 */}
-              <div className="flex items-center gap-3 text-xs text-[#8B6F47] mb-3">
+              <div className="flex items-center gap-2 flex-wrap text-xs text-[#8B6F47] mb-3">
                 <span>⏱️ {Math.floor(visit.duration_minutes / 60)}시간 {visit.duration_minutes % 60}분</span>
                 <span>·</span>
                 <span>체감난이도: {['😊', '😐', '😅', '😰', '💀'][visit.difficulty_rating - 1] || '😐'}</span>
